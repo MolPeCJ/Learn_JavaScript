@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        
+        <script>
+            "use strict";
+            // Строковое преобразование - false становится "false", null - "null" и т.п.
+            let value = true;
+            alert(typeof value); // boolean
+            value = String(value);
+            alert(typeof value); // string
+
+            // Численное преобразование - пробельные символы по краям обрезаются. 
+            // Далее, если остаётся пустая строка, то получаем 0, иначе из непустой строки «считывается» число. 
+            // При ошибке результат NaN.
+            alert( "6" / "2" ); // 3
+            let str = "123";
+            alert(typeof str); // string
+            str = Number(str);
+            alert(typeof str); // number
+
+            // Логическое преобразование - значения, которые интуитивно «пустые», вроде 0, пустой строки, null, undefined и NaN, становятся false.
+            // Все остальные значения становятся true (даже где просто пробельный символ, он же есть).
+            alert( Boolean(1) ); // true
+            alert( Boolean(0) ); // false
+            alert( Boolean ("0") ); // true
+            alert( Boolean("") ); // false
+        </script>
+
+    </body>
+</html>
