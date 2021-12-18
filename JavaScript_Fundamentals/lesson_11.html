@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <script>
+            // || - логический оператор "ИЛИ" - возвращает первое истинное значение
+            // или последнее ложное
+            let x;
+            false || (x = 1);
+            alert( x );
+
+            // && - логический оператор "И" - возвращает первое ложное значение
+            // или последнее истинное
+            let hour = 12;
+            let minute = 30;
+            if (hour == 12 && minute == 30)
+            {
+                alert( "The time is 12:30" );
+            }
+            (hour == 12) && (minute == 30) && alert( "All right!"); // аналог строчки выше
+
+            // Оператор "НЕ" представлен восклицательным знаком "!"
+            alert( !true ); // false
+            alert( !!"non-empty string"); // true - преобразование в логическое значение
+            alert( Boolean("non-empty string") ); // true - тоже преобразование в логическое значение
+
+            let begin = prompt( "Who are you?", "" );
+            if (begin == "Admin") {
+                let next = prompt( "What is the parol?", "" );
+                if (next == "I am the boss") {
+                    alert( "Good afternoon!" );
+                }
+                else if (next == "" || next == null) {
+                    alert ( "Otmened" );
+                }
+                else if (next != "I am the boss" && next != "Otmena") {
+                    alert ( "Error parol" );
+                }
+            }
+            else if (begin == "" || begin == null) {
+                alert( "Otmened" );
+            }
+            else if (begin != "Admin" && begin != "Otmena") {
+                alert( "I don't know you" );
+            }
+        </script>
+        
+    </body>
+</html>
