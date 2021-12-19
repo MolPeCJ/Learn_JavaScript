@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <script>
+            // Конструкция "switch" заменяет собой сразу несколько "if"
+            let c = 2 + 2;
+            switch(c) {
+                case 3:
+                    alert( "Too little" );
+                    break;
+
+                case 4:
+                    alert( "You are right!" );
+                    break;
+
+                case 5:
+                    alert( "Too many" );
+                    break;
+            }
+
+            // Группировка case
+            let a = 2 + 2;
+            switch (a) {
+                case 4:
+                    alert('Правильно!');
+                    break;
+
+                case 3: // (*) группируем оба case
+                case 5:
+                    alert('Неправильно!');
+                    alert("Может вам посетить урок математики?");
+                    break;
+
+                default:
+                    alert('Результат выглядит странновато. Честно.');
+            }
+
+            // Тип имеет значение
+            let arg = prompt("Введите число?");
+            switch (arg) {
+                case '0':
+                case '1':
+                    alert( 'Один или ноль' );
+                    break;
+
+                case '2':
+                    alert( 'Два' );
+                    break;
+
+                case 3:
+                    alert( 'Никогда не выполнится!' ); // потому что arg - строка, а в этом case - число
+                    break;
+
+                default:
+                    alert( 'Неизвестное значение' );
+            }
+            
+            // Пример
+            const number = prompt( "Enter the number", "");
+            switch(number) {
+                case 0:
+                    alert( "Вы ввели число 0" );
+                    break;
+
+                case 1:
+                    alert( "Вы ввели число 1" );
+                    break;
+
+                case 2:
+                case 3:
+                    alert( "Вы ввели число 2, а может и 3" );
+                    break; // - не обязателен, ставится по "правилам хорошего тона"
+            }
+        </script>
+
+    </body>
+</html>
