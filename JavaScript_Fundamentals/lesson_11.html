@@ -24,23 +24,23 @@
             alert( !!"non-empty string"); // true - преобразование в логическое значение
             alert( Boolean("non-empty string") ); // true - тоже преобразование в логическое значение
 
-            let begin = prompt( "Who are you?", "" );
-            if (begin == "Admin") {
-                let next = prompt( "What is the parol?", "" );
-                if (next == "I am the boss") {
+            let userName = prompt( "Who are you?", "" );
+            if (userName == "Admin") {
+                let pass = prompt( "What is the pass?", "" );
+                if (pass == "I am the boss") {
                     alert( "Good afternoon!" );
                 }
-                else if (next == "" || next == null) {
-                    alert ( "Otmened" );
+                else if (pass == "" || pass == null) {
+                    alert ( "Cancelled" );
                 }
-                else if (next != "I am the boss" && next != "Otmena") {
-                    alert ( "Error parol" );
+                else {
+                    alert ( "Invalid parol" );
                 }
             }
-            else if (begin == "" || begin == null) {
-                alert( "Otmened" );
+            else if (userName == "" || userName == null) {
+                alert( "Cancelled" );
             }
-            else if (begin != "Admin" && begin != "Otmena") {
+            else {
                 alert( "I don't know you" );
             }
         </script>
