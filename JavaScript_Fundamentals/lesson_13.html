@@ -3,6 +3,7 @@
     <body>
 
         <script>
+            "use strict";
             // while (i) - более краткий вариант while (i != 0)
             let i = 3;
             while (i) alert(i--); // если тело цикла состоит лишь из одной инструкции, {} можно не писать
@@ -46,7 +47,12 @@
             // Важно помнить, что вызов break/continue возможен только внутри цикла и 
             // метка должна находиться где-то выше этой директивы
 
+            // Чтобы организовать бесконечный цикл, используют конструкцию while (true)
 
+            while(true) {
+                let answer = prompt('Please give me right number', '');
+                if (+answer == 100 || answer == null) break;
+            }
         </script>
 
     </body>
