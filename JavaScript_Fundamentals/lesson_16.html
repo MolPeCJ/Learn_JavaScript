@@ -22,6 +22,7 @@
 
             // Мы можем скопировать функцию в другую переменную:
             let func = sayHi; // важно, что здесь нет круглых скобок
+
             func(); // Hi
 
             // Функции - 'колбэки'.
@@ -49,7 +50,6 @@
             /* Пример использования Function Expression, ведь объявление Function Declaration видимо только
             внутри блока кода, в котором располагается. */
             let age = prompt('How old are you?', '');
-            
             let welcome;
             
             if (age < 18) {
@@ -66,10 +66,9 @@
 
             // Можно упростить этот код ещё сильнее, используя условный оператор ?:
             let age1 = prompt('How old are you?', '');
-            
             let welcome1 = (age1 < 18) ? 
-            function() { alert( 'Hi!' ); } : 
-            function() { alert( 'Hello!' ); };
+                function() { alert( 'Hi!' ); } : 
+                function() { alert( 'Hello!' ); };
             
             welcome1(); // теперь всё в порядке
         </script>

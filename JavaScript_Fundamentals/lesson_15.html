@@ -74,6 +74,7 @@
             }
 
             let result = sum(1, 2);
+
             alert( result );
             // или
             function checkAge(age) {
@@ -85,16 +86,51 @@
                 }
             }
 
-            let age = prompt('How old are you?', '');
+            let age = prompt( 'How old are you?', '' );
 
             if ( checkAge(age) ) {
                 alert( 'You are welcome!' );
             }
             else {
-                alert( 'Not today, unfortunately');
+                alert( 'Not today, unfortunately' );
             }
             /* Возможно использовать 'return' и без значения. Пустой 'return'
             аналогичен undefined. */
+
+            /////////////////////////////////////////////
+            ///////////// Questions (3.5/4) /////////////
+            /////////////////////////////////////////////
+
+            // Is "else" required?
+            // Нет, обе функции абсолютно идентичны
+
+            // Rewrite the function using '?' or '||'
+            let age1 = 18;
+            
+            function checkAge1(age1) { return (age1 > 18 ? true : confirm( "Dou you parents know about it?" )) };
+            function checkAge2(age1) { return (age1 > 18 || confirm( "Dou you parents know about it?" )) };
+
+            // Function min(a, b)
+            let num1 = prompt( "Enter num1", "" );
+            let num2 = prompt( "Enter num2", "" );
+
+            function min(num1, num2) { return (num1 > num2 ? num2 : num1) };
+
+            alert(min(num1, num2));
+
+            // Function pow(x,n)
+            let numPow1 = prompt( "Enter num1 for pow", "" );
+            let numPow2 = prompt( "Enter num2 for pow", "" );
+
+            function pow(num1, num2) {
+                if (num2 >= 1) {
+                    return num1 ** num2;
+                } else {
+                    return `Uncorrect num2 - ${num2}`;
+                }
+            };
+
+            alert(pow(numPow1, numPow2));
         </script>
 
     </body>

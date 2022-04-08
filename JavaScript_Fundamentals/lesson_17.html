@@ -3,7 +3,7 @@
     <body>
         <script>
             "use strict";
-            // Функции-стрелки
+            // Функции-стрелки или стрелочные функции "arrow functions"
             let sum = function(a, b) {
                 return a + b;
             };
@@ -19,10 +19,19 @@
 
             alert( double(3) ); // 6
 
-            // Если нет аргументов, указываются пустые круглые скобки:
+            // Если нет аргументов, указываются пустые круглые скобки
             let sayHi = () => alert( 'Hello!' );
             
             sayHi(); // Hello!
+
+            // Стрелочные функции можно использовать так же, как и Function Expression.
+            // Например, для динамического создания функции
+            let age = prompt( "How old are you?", "" );
+            let welcome = (age < 18) ?
+                () => alert( "Hi" ) : 
+                () => alert( "Hello" );
+
+            welcome()
 
             // Многострочные стрелочные функции
             let sum2 = (a, b) => {  // фигурная скобка, открывающая тело многострочной функции
@@ -32,16 +41,20 @@
             
             alert( sum2(1, 2) ); // 3
 
-            let ask = (question, yes, no) => {
-                if (confirm(question)) {
-                    return yes();
-                }
-                else {
-                    return no();
-                }
-            }
+            /////////////////////////////////////////////
+            ///////////// Questions (0.5/1) /////////////
+            /////////////////////////////////////////////
 
-            ask('Do you agree?', () => alert( 'You agree.' ), () => alert( 'You disagree.' )); // еще один пример
+            // Rewrite with arrow functions (!)
+            let ask = (question, yes, no) => confirm(question) ? yes() : no();
+
+            ask(
+                "Are you agree?",
+                () => alert( "You are agree" ),
+                () => alert( "You are disagree" )
+            );
+
+            // не ту функцию изменил, но изменил правильно (поменял Function Declaration, а не Expression)
         </script>
     </body>
 </html>
