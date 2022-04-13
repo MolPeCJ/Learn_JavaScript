@@ -157,9 +157,58 @@ userEnd.sayHi(); // Ilya
 ///////////// Questions (1/5) ///////////////
 /////////////////////////////////////////////
 
-// Extra question
+// Extra question (!)
 // Результатом выполнения кода будет: 
 // Ответил неправильно, увидел ошибку в исполнении функции, а она была в пропущенный ; после let
 
+// Extra question (!)
+// Не понял причину вывода на экран undefined
+// Ответ следующий: сложный вызов (expression).method() работает только при разделении на 2 строчки
+
 // Using "this" in object literal
-// 
+// Да, здесь ошибка, неизвестно что за name
+
+// Create a calculator (!)
+// Команда ввода информации в node.js иначе выглядит, не prompt. В песочнице код работает
+let calculator = {
+    read() {
+        this.theFirstNumber = +prompt( "Enter the first number", "" );
+        this.theSecondNumber = +prompt( "Enter the second number", "" );
+    },
+    sum() {
+        return(this.theFirstNumber + this.theSecondNumber);
+    },
+    mul() {
+        return(this.theFirstNumber * this.theSecondNumber);
+    }
+};
+
+calculator.read();
+console.log( calculator.sum() );
+console.log( calculator.mul() );
+// Написал точно такой же код, только не написал this в return-ax, поэтому не сработал
+
+// Chaining (!)
+let ladder = {
+    step: 0,
+    up() {
+        this.step++;
+        return this; // возврат самого объекта в методе
+    },
+    down() {
+        this.step--;
+        return this; 
+    },
+    showStep: function() {
+        console.log( this.step );
+        return this; 
+    }
+};
+
+ladder
+    .up()
+    .up()
+    .down()
+    .showStep(); // более читабельный код
+// То есть, чтобы можно было сделать несколько последовательных вызовов в цепочке (не с новой строчки,
+// а именно в цепочки), то для этого необходимо добавить возврат самого объекта в каждом методе!
