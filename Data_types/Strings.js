@@ -97,4 +97,81 @@ console.log( "Interface".toUpperCase() ); // INTERFACE
 // Еслимы мы захотим перевести в другой регистр какой-то конкретный символ и показать его:
 console.log( "Interface"[1].toUpperCase()); // N
 
-// Поиск подстроки
+// Поиск подстроки (!)
+
+// Существует несколько способов поиска подстроки
+
+// str.indexOf(substr, pos)
+// Он ищет подстроку substr в строке str, начиная с позиции pos, и возвращает позицию, на
+// которой располагается совпадение, либо -1 при отсутствии совпадений
+let str3 = "My wallet in unbroken";
+
+console.log( str3.indexOf("w") ); // 3 - место расположения w в строке str3
+console.log( str3.indexOf("z") ); // -1 - нет совпадений
+console.log( str3.indexOf("e", 8) ); // 19, потому что поиск начался с 8ого символа
+// Чтобы найти все вхождения подстроки, нужно запустить indexOf в цикле. Каждый раз, получив
+// очередную позицию, начинаем новый поиск со следующей:
+let str4 = "My oslik ya-ya is watching TV";
+let substr4 = "ya";
+
+let pos = 0;
+while(true) {
+    let foundPos = str4.indexOf(substr4, pos); // тут находим 1-е вхождение, если таковое есть
+    if (foundPos == -1) break; // обеспечивает выход в конце
+
+    console.log( `It is here: ${foundPos}` );
+    pos = foundPos + 1; // мы нашли и продолжаем уже со следующей позиции
+}
+
+// str.lastIndexOf(substr, position)
+// Похожий на предыдущий метод. Ищет вхождения с конца строки к ее началу.
+// Он используется тогда, когда нужно получить самое последнее вхождение: перед концом строки
+// или начинающееся до (включительно) определенной позиции
+let str5 = "I just love this world, love birds and animals";
+
+console.log( str5.lastIndexOf("love") ); // 24
+
+// Еще из интересностей! Если делать if с indexOf без != -1, то такая запись может
+// показать неправильный результат:
+let str6 = "Widget with id";
+
+if (str6.indexOf("Widget")) {
+    console.log( "Gotcha!" );
+} else {
+    console.log( "Error" ); // это и появится, хотя Widget есть
+}
+// Дело в том, что вхождение Widget начинается с 0-ого символа, поэтому возвращается 0
+// и интерпретируется if как значение false. Поэтому надо делать if с != -1
+if (str6.indexOf("Widget") != -1) {
+    console.log( "Gotcha!" ); // сообщение появится
+}
+
+// Трюк с побитовым НЕ
+
+// Существует старый трюк с использованием оператора НЕ - ~. Он приобразует число в 
+// 32-разрядное целое со знаком (signed 32-bit integer). Дробная часть, в случае, если она
+// присутствует, отбрасывается. Проще говоря: результат работы оператора - возвращение число +1:
+console.log( ~-1 ); // 0
+console.log( ~0 ); // 1
+console.log( ~1 ); // 2
+// Соответственно, прохождение проверки if ( ~str.indexOf("...") ) означает, то результат
+// indexOf отличен от -1 и совпадение есть. Поэтому это иногда применяют, смотрится компактнее:
+let str7 = "I love JavaScript";
+
+if ( ~str7.indexOf("love") ) {
+    console.log( "Gotcha!" ); // выведет
+}
+
+// includes, startsWith, endsWith (!)
+// Более современный метод str.includes(substr, pos) возвращает true, если в строке str есть
+// подстрока substr, либо false, если нет.
+// Это - правильный выбор, если нам необходимо проверить, если ть совпадение, но позиция не нужна:
+console.log( str7.includes("love") ); // true
+// Необязательный второй аргумент str.includes позволяет начать поиск с определенной позиции:
+console.log( str7.includes("love", 8) ); // false
+// Методы str.startsWith, str.ednsWith проверяют, начинается ли и заканчивается ли строка
+// определенной подстрокой:
+console.log( str7.startsWith("I") ); // true
+console.log( str7.startsWith("love") ); // false
+console.log( str7.endsWith("Script") ); // true
+console.log( str7.endsWith("Java") ); // false
