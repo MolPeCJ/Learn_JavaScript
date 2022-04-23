@@ -230,3 +230,27 @@ console.log( String(example5) === "1,2,5" ); // true
 console.log( [1,2] + 1); // 1,21
 // будет такой же результат как и при
 console.log( "1,2" + 1); // 1,21
+
+/////////////////////////////////////////////
+///////////// Questions (1/4) ///////////////
+/////////////////////////////////////////////
+
+// Скопирован ли массив?
+// Яблоки, груша, апельсин, банан = 4
+
+// Операции с массивами
+let styles = ["Jazz", "Bluz"];
+
+styles.push("Rock-N-Roll");
+
+function changeKey(array) {
+    array[Math.ceil(array.length / 2 - 1)] = "Classic";
+
+    return array;
+}
+
+changeKey(styles);
+
+console.log( styles );
+
+console.log( styles.shift() );
