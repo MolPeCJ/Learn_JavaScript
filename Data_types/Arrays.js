@@ -232,7 +232,7 @@ console.log( [1,2] + 1); // 1,21
 console.log( "1,2" + 1); // 1,21
 
 /////////////////////////////////////////////
-///////////// Questions (1/4) ///////////////
+///////////// Questions (3/5) ///////////////
 /////////////////////////////////////////////
 
 // Скопирован ли массив?
@@ -254,3 +254,59 @@ changeKey(styles);
 console.log( styles );
 
 console.log( styles.shift() );
+
+styles.unshift("Rap", "Reggi");
+
+console.log( styles );
+
+// Вызов в контексте массива (!)
+// Результатом будет arr.push(function)
+// А вот и нет, он выведет на экран "a", "b", function, потому что
+// this относится к arr
+
+// Сумма выведенных чисел
+/*let answer;
+
+function sumInput() {
+    let arr = [];
+    let answer = 0;
+
+    while (true) {
+        answer = +prompt( "Enter a value", "" );
+
+        if (answer == "" || answer == null || !isFinite(answer)) break;
+
+        arr.push(answer);
+    }   
+
+    for (let i = 0; i < arr.length; i++) {
+        answer += arr[i];
+    }
+
+    return answer;
+}
+
+alert( sumInput() );*/
+
+// Подмассив наибольшей суммы (!)
+/*let arr7 = [2, -1, 2, 3, -9];
+
+function getMaxSubSum(arr) {
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        let answer = [];
+
+        if ([i] + [i + 1] == arr[i + 2]) {
+            console.log(arr[i]);
+            answer.push(arr[i]);
+            console.log(answer[i]);
+        }
+
+        sum += answer[i];
+    }
+
+    return sum;
+}
+
+console.log( getMaxSubSum(arr7) );*/
