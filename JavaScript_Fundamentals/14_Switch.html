@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <script>
+            "use strict";
+            // Конструкция "switch" заменяет собой сразу несколько "if"
+            let c = 2 + 2;
+
+            switch(c) {
+                case 3:
+                    alert( "Too little" );
+                    break;
+
+                case 4:
+                    alert( "You are right!" );
+                    break;
+
+                case 5:
+                    alert( "Too many" );
+                    break;
+            }
+
+            // Группировка case
+            let a = 2 + 2;
+
+            switch (a) {
+                case 4:
+                    alert( 'Correct!' );
+                    break;
+
+                case 3: // (*) группируем оба case
+                case 5:
+                    alert( 'Wrong!' );
+                    alert( "Why don't you take a math class?" );
+                    break;
+
+                default:
+                    alert( 'The result is strange. Really.') ;
+            }
+
+            // Тип имеет значение
+            let arg = prompt( "Enter a value?", "" );
+
+            switch (arg) {
+                case '0':
+                case '1':
+                    alert( 'One or zero' );
+                    break;
+
+                case '2':
+                    alert( 'Two' );
+                    break;
+
+                case 3:
+                    alert( 'Never executes!' ); // потому что arg - строка, а в этом case - число
+                    break;
+
+                default:
+                    alert( 'An unknown value' );
+            }
+            
+            /////////////////////////////////////////////
+            ///////////// Questions (2/2) ///////////////
+            /////////////////////////////////////////////
+
+            // Rewrite the "switch" into an "if"
+            let browser = prompt( "What browser do you have?", "" );
+
+            if (browser == "Edge") {
+                alert( "You've got the Edge!" );
+            } else if (browser == "Chrome" || browser == "Firefox"
+            || browser == "Safari" || browser == "Opera") {
+                alert( "Okay we support these browsers too" );
+            } else {
+                alert( "We hope that this page looks ok!" );
+            }
+
+            // Rewrite "if" into "switch"
+            let number = +prompt( "Put the number between 0 and 3", "" );
+
+            switch (number) {
+                case 0: 
+                    alert( "This is 0" );
+
+                case 1: 
+                    alert( "This is 1" );
+                
+                case 2: 
+                case 3: 
+                    alert( "This is 2 or 3" );
+            }
+        </script>
+
+    </body>
+</html>

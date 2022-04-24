@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <script>
+            "use strict";
+            /* || - логический оператор "ИЛИ" - возвращает первое истинное значение
+            или последнее ложное. */
+            let x;
+            false || (x = 1);
+            alert( x );
+
+            /* && - логический оператор "И" - возвращает первое ложное значение
+            или последнее истинное. */
+            let hour = 12;
+            let minute = 30;
+            if (hour == 12 && minute == 30)
+            {
+                alert( "The time is 12:30" );
+            }
+            (hour == 12) && (minute == 30) && alert( "All right!"); // аналог строчки выше
+
+            // Оператор "НЕ" представлен восклицательным знаком "!"
+            alert( !true ); // false
+            alert( !!"non-empty string"); // true - преобразование в логическое значение
+            alert( Boolean("non-empty string") ); // true - тоже преобразование в логическое значение
+
+            /////////////////////////////////////////////
+            ///////////// Questions (6.5/9) /////////////
+            /////////////////////////////////////////////
+
+            // What's the result of OR?
+            alert( null || 2 || undefined ); // 2
+
+            // What's the result of OR'ed alerts?
+            alert( alert(1) || 2 || alert(3) ); // 1, 2
+
+            // What is the result of AND?
+            alert( 1 && null && 2 ); // null
+
+            // What is the result of AND'ed alerts? (!)
+            alert( alert(1) && alert(2) ); // 1
+            // 1, а затем undefined, потому что alert сначала выполняется,
+            // а потом возвращает undefined
+
+            // The result of OR AND OR (!)
+            alert( null || 2 && 3 || 4); // 1 или true
+            // 3, потому что && покажет последнее значение true
+            // и будет null || 3 || 4
+
+            // Check the range between
+            let age;
+            if (age >= 14 && age <= 90) {
+                alert( "It's correct!" );
+            }
+
+            // Check the range outside
+            let age1;
+            if (age1 <= 14 || age >= 90) {
+                alert( "It's correct!" );
+            }
+
+            // A question about "if"
+            if (-1 || 0) alert( 'first' ); // выполнится, -1 - true
+            if (-1 && 0) alert( 'second' ); // не выполнится, везде false
+            if (null || -1 && 1) alert( 'third' ); // null || 1, выполнится
+
+            // Check the login (!)
+            let login;
+            login = prompt( "Who are you?", "" );
+            if (login == "Admin") {
+                let password;
+                password = prompt( "What is the password?" );
+                if (password == "Cancel") {
+                    alert( "Canceled" );
+                } else if (password == "TheMaster") {
+                    alert( "Welcome!" );
+                } else {
+                    alert ( "Wrong password" );
+                }
+            } else if (login == "Canceled") {
+                alert( "Canceled" );
+            } else {
+                alert( "I don't know you" );
+            }
+            // задание по идее правильное, но следует помнить, что prompt при нажатии Esc
+            // возвращает null, а при пустом сообщении - ""! Это и подразумевалось под Canceled
+        </script>
+        
+    </body>
+</html>

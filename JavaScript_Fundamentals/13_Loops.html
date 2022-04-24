@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <script>
+            "use strict";
+            // Цикл "while" - проверяет условие ПЕРЕД каждой итерацией
+            // while (i) - более краткий вариант while (i != 0)
+            let i = 3;
+
+            while (i) alert(i--); // если тело цикла состоит лишь из одной инструкции, {} можно не писать
+            
+            // Цикл "do...while" - проверяет условие ПОСЛЕ каждой итерации
+            // Проверку условия можно разместить под телом цикла, используя специальный синтаксис do..while
+            let example = 5;
+            do {
+                alert( example );
+                example--;
+            } while (example);
+
+            // Цикл "for" - проверяет условие перед каждой итерацией + доп. настройки
+            // Части "for" можно пропускать
+            let i1 = 1; // мы уже объявили переменную ~ счетчик
+
+            for (; i1 <= 3; i1++) { // ; обязательно должны присутствовать
+                alert( i1 ); // 1, 2, 3
+            }
+            // for (;;) {} - будет выполняться вечно
+
+            // Специальная директива "break"
+            let sum = 0;
+
+            while (true) { // обычно цикл завершается при вычислении условия в false
+                let value = +prompt( "Enter a number", "");
+
+                if (!value) break; // хороший способ прервать бесконечный цикл
+
+                sum += value;
+            }
+
+            alert( "Sum: " + sum);
+
+            // Переход к следующей итерации: "continue"
+            for (let i = 0; i < 10; i++) {
+                if (i % 2 == 0) continue; // позволяет избегать вложенности
+
+                alert( i ); // 1, 3, 5, 7, 9
+            }
+
+            // Нельзя использовать "break/continue" справа от оператора "?"
+
+            // Метки для break/continue - чтобы выйти одновременно из нескольких уровней цикла сразу
+            outer: for (let i = 0; i < 3; i++) {
+
+                for (let j = 0; j < 3; j++) {
+
+                    let input = prompt( `Enter the coordinants (${i},${j})`, "");
+
+                    if (!input) break outer;
+                }
+            }
+
+            alert( "Congratulations!" );
+            /* Обычный "break" лишь прервет внутренний цикл, но этого недостаточно.
+            Достичь желаемого можно с помощью меток.
+            Добавляю outer: в начало и дополняю break! 
+            Можно размещать метку на отдельной строке над циклом! */
+            
+            /* Важно помнить, что вызов break/continue возможен только внутри цикла и 
+            метка должна находиться где-то выше этой директивы. */
+
+            // Чтобы организовать бесконечный цикл, используют конструкцию while (true)
+            while (true) {
+                let answer = prompt('Please give me right number', '');
+                if (+answer == 100 || answer == null) break;
+            }
+
+            /////////////////////////////////////////////
+            ///////////// Questions (4/7) ///////////////
+            /////////////////////////////////////////////
+
+            // Last loop valuе
+            let i3 = 3;
+
+            while (i3) {
+                alert( i3-- );
+            }
+            // 1 - постфиксная форма оператора, возвращает старое значение
+
+            // Which values does the while loop show? (!)
+            let i2 = 0;
+            let i21 = 0;
+
+            while (++i2 < 5) alert( i2 ); // 1, 2, 3, 4
+            while (i21++ < 5) alert( i21 ); // 0, 1, 2, 3, 4
+            // 1, 2, 3, 4, 5, потому что когда i21 увеличивается на 1, будет 0 < 5,
+            // но последующий alert не относится к этому выражению, получит i21 = 1
+
+            // Which values get shown by the "for" loop? (!)
+            for (let i = 0; i < 5; i++) alert( i ); // 0, 1, 2, 3, 4, 5
+            for (let i = 0; i < 5; ++i) alert( i ); // 0, 1, 2, 3, 4
+            // 0, 1, 2, 3, 4 в обоих случаях, потому что увеличение i
+            // выполняется отдельно от проверки условия - не разницы между i++ и ++i
+
+            // Output even numbers in the loop
+            for (let i = 2; i < 11; i++) {
+                if (i % 2 == 1) continue;
+
+                alert( i );
+            }
+
+            // Replace "for" with "while"
+            let i7 = 0;
+
+            while (i7 < 3) {
+                alert( `number ${i7}` );
+                i7++;
+            }
+
+            // Repeat until the input is correct
+            while (true) {
+                let userAnswer = prompt( "Put the number greater than 100", "" );
+                if (+userAnswer > 100 || userAnswer == null) break;
+            }
+
+            // Output prime numbers (!)
+            let n = prompt( "What is n?", "");
+
+            outer1:
+            for (let i = 2; i <= n; i++) {
+                for (let j = 2; j < i; j++) {
+                    if (i % j == 0) continue outer1;
+                }
+
+                alert( i );
+            }
+            // Написал такой же код, только вместо j = 2 было j = 1 и не срабатывало
+            // Почему? 
+        </script>
+
+    </body>
+</html>
