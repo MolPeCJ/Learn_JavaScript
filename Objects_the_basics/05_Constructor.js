@@ -10,7 +10,7 @@
 // Функции-конструкторы являются обычными функциями. Но есть два соглашения: 
 // 1. Имя функции конструктора должно начинаться с большой буквы
 // 2. Функция-конструктор должна вызываться при помощи оператора "new"
-/*function User(name) {
+function User(name) {
     this.name = name;
     this.isAdmin = false;
 }
@@ -129,7 +129,7 @@ function B() {
 let a = new A;
 let b = new B;
 
-console.log( a == b ); */
+console.log( a == b );
 // Да, возможно, неправильно ответил, что невозможно после одного неудачного теста
 
 // Create new Calculator
@@ -161,7 +161,7 @@ console.log( "Mul=" + calculator.mul() );*/
         this.addValue = +prompt( "Enter value", "" );
         this.value += this.addValue;
     }
-}*/
+}
 
 // 26.04.2022 -> 3/3
 // Две функции - один объект
