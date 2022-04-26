@@ -10,7 +10,7 @@
 // Функции-конструкторы являются обычными функциями. Но есть два соглашения: 
 // 1. Имя функции конструктора должно начинаться с большой буквы
 // 2. Функция-конструктор должна вызываться при помощи оператора "new"
-function User(name) {
+/*function User(name) {
     this.name = name;
     this.isAdmin = false;
 }
@@ -129,7 +129,7 @@ function B() {
 let a = new A;
 let b = new B;
 
-console.log( a == b );
+console.log( a == b ); */
 // Да, возможно, неправильно ответил, что невозможно после одного неудачного теста
 
 // Create new Calculator
@@ -162,3 +162,48 @@ console.log( "Mul=" + calculator.mul() );*/
         this.value += this.addValue;
     }
 }*/
+
+// 26.04.2022 -> 3/3
+// Две функции - один объект
+/*let name2 = {
+    name: "Pasha"
+};
+
+function A() {
+    return name2;
+};
+
+function B() {
+    return name2;
+};
+
+let a = new A;
+let b = new B;
+
+console.log( a == b );*/
+
+// Создание калькулятора при помощи конструктора 
+/*function Calculator() {
+    this.read = function() {
+        this.a = +prompt( "Enter a", "" );
+        this.b = +prompt( "Enter b", "" );
+    }
+    this.sum = function() {
+        return this.a + this.b;
+    }
+    this.mul = function() {
+        return this.a * this.b;
+    }
+}*/
+// не секунду забыл как используется метод в качестве свойства в конструкторе xD
+// я через this создаю ключ свойства и после = пишу его значение
+
+// Создаем Accumulator
+/*function Accumulator(startingValue) {
+    this.value = startingValue;
+
+    this.read = function() {
+        this.value += +prompt( "Enter a number", "" );
+    }
+}*/
+// забыл первоначально this, но одумался и вставил
