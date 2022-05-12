@@ -194,3 +194,18 @@ function correctRandomInteger(min, max) {
 }
 
 console.log( correctRandomInteger(1, 5) );
+
+// 11.05.2022 -> 3.5/6
+
+// Cумма пользовательских чисел 
+
+/*let num1 = +prompt( "Enter a value", "" );
+let num2 = +prompt( "Enter a value", "" );
+           
+alert(num1 + num2);*/
+
+// Почему 6.35.toFixed(1) == 6.3?
+
+// Ввод числового значения (!)
+// Правильный механмз isFinite и бесконечный цикл while, неправильно if-ыбыли расставлены
+

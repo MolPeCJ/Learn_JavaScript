@@ -43,17 +43,17 @@ obj[Symbol.toPrimitive] = function(hint) {
     // вот код преобразования этого объекта в примитив
     // он должен вернуть примитивное значение
     // hint = чему-то из "string", "number", "default"
-};
+};*/
 // Если метод Symbol.toPrimitive существует, он используется для всех хинтов, и больше никаких
 // методов не требуется.
-// Например, здесь объект user реализует его:*/
+// Например, здесь объект user реализует его:
 let user = {
     name: "Jhon",
     money: 1000,
 
     [Symbol.toPrimitive](hint) {
         console.log( `hint: ${hint}` );
-        return hint == "string" ? `{name: ${this.name}}` : this.money;
+        return hint == "string" ? `name: ${this.name}` : this.money;
     }
 };
 
