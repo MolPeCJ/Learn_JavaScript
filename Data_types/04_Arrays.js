@@ -310,3 +310,44 @@ function getMaxSubSum(arr) {
 }
 
 console.log( getMaxSubSum(arr7) );*/
+
+// 13.05.2022 -> 3/5
+
+// Скопирован ли массив?
+// 4, так как массивы это объекты, они так же копируются по ссылке
+
+// Операции с массивами (!)
+/* let styles = ["Jazz", "Bluz"];
+    alert( styles );
+    styles.push("Rock-N-Roll");
+    alert( styles );
+    styles[Math.floor(styles.length / 2)] = "Classic";
+    alert( styles );
+    alert( styles.shift() );
+    alert( styles );
+    styles.unshift("Rap", "Reggi");
+    alert( styles ); */ 
+// не добавил тут styles.length - 1, но работает и без, смотря куда захочу поставить элемент
+
+// Вызов в контексте массива (!)
+// Сначала подумал правильно, решил проверить и оказалось немного не так
+
+// Сумма введенных чисел
+/*function sumInput() {
+    let arr = [];
+    let sum = 0;
+
+    while (true) {
+        let answer = +prompt( "Enter a value", "" );
+        if (answer == '' || answer == null || !isFinite(answer)) break;
+        arr.push(answer);
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        sum += arr[i];
+    }
+
+    return sum;
+}*/ 
+
+// Подмассив наибольшей суммы - пока слишком сложная задача 
