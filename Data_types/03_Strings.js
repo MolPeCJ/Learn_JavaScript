@@ -299,6 +299,74 @@ console.log( checkSpam("qwe xxxxx l") );
 // Усечение строки 
 
 // Выделить число
-function extractCurrencyValue(str) {
+
+// 13.05.2022 -> 4/4
+
+// Сделать первый символ заглавным
+/* function ucFirst(str) {
+    if (str == "") {
+        return "";
+    };
     
+    let str2 = "";
+
+    str2 += str[0].toUpperCase();
+
+    for (let i = 1; i < str.length; i++) {
+        str2 += str[i];
+    }
+    
+    return str2;
+}*/
+
+// Проверка на спам
+/*function checkSpam(str) {
+    for (let i = 0; i < str.length; i++) {
+        if (
+            (str[i] == 'V' || str[i] == 'v') &&
+            (str[i + 1] == 'I' || str[i + 1] == 'i') &&
+            (str[i + 2] == 'A' || str[i + 2] == "a") &&
+            (str[i + 3] == 'G' || str[i + 3] == 'g') &&
+            (str[i + 4] == 'R' || str[i + 4] == 'r') &&
+            (str[i + 5] == 'A' || str[i + 5] == 'a')
+        ) {
+            return true;
+        };
+
+        if (
+            (str[i] == 'X' || str[i] == 'x') &&
+            (str[i + 1] == 'X' || str[i + 1] == 'x') &&
+            (str[i + 2] == 'X' || str[i + 2] == "x")
+        ) {
+            return true;
+        };
+    };
+    return false;
+}*/ 
+
+// Усечение строки 
+/*function truncate(str, maxLength) {
+    let answer = "";
+
+    if (str.length > maxLength) {
+        for (let i = 0; i < maxLength - 1; i++) {
+            answer += str[i];
+        }
+        answer += String.fromCharCode(8230);
+
+        return answer.length;
+    }
+
+    return str;
+}*/ 
+
+// Выделить число
+/* function extractCurrencyValue(str) {
+    let answer = "";
+
+    for(let i = 1; i < str.length; i++) {
+        answer += str[i];
+    }
+
+    return +answer;
 }
