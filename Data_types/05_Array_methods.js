@@ -56,6 +56,66 @@ console.log( arr3 ); // "Let's, "study", "dance", "right now"
 
 let arr4 = ["My", "fucking", "world"];
 
-arr4.splice(-1, 0, "прекрасный");
+arr4.splice(-1, 0, "beautiful");
 
 console.log( arr4 ); // "My", "fucking", "beatiful", "world"
+
+// Метод arr.slice([start], [end]) - возвращает новый массив, в который копирует элементы, начиная
+// с индекс start и до end (не включительно). Оба индекса могут быть отрицательными. В таком случае
+// отсчет будет начинаться с конца массива. 
+// Можно вызвать slice вообще без аргументов - arr.slice(). Это создаст копию массива arr. Часто
+// используется для простого создания копии!
+
+let copie = arr4.slice();
+
+console.log( copie ); // "My", "fucking", "beatiful", "world"
+
+// Метод arr.concat(arg1, arg2) - создает новый массив из элементов аргументов или же значений, 
+// поступивших в качестве аргументов
+
+let arr5 = [1, 2];
+
+console.log( arr5.concat(3, 4, [5]) ); // 1, 2, 3, 4, 5
+
+let externalValues = {
+    0: 'some',
+    1: 'info',
+    [Symbol.isConcatSpreadable]: true,
+    length: 2
+};
+
+console.log( arr5.concat(externalValues) ); // 1, 2, 'some', 'info'
+
+// Перебор: forEach
+// Позволяет запускать функцию для каждого элемента массива
+
+let arr6 = ['Bibo', 'Boba', 'Alexei'];
+
+arr6.forEach((item, index, array) => {
+    console.log( `${item} has a ${index} position in ${array}` );
+});
+// Bibo has a 0 position in Bibo,Boba,Alexei
+// Boba has a 1 position in Bibo,Boba,Alexei
+// Alexei has a 2 position in Bibo,Boba,Alexei
+
+// Поиск в массиве 
+// Методы indexOf, lastIndexOf, includes
+let arr7 = [0, 1, 2, 3];
+
+console.log( arr7.indexOf(2, 0) ); // 2
+console.log( arr7.lastIndexOf(2, -1) ); // 2
+console.log( arr7.includes(2) ); // true
+
+let users = [
+    {id: 1, name: "Вася"},
+    {id: 2, name: "Петя"},
+    {id: 3, name: "Маша"}
+  ];
+  
+  let user = users.find(function (item) {
+      if (item.id == 2) {
+          return item;
+      }
+  });
+  
+  console.log(user.name); // Вася
