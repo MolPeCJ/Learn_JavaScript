@@ -119,3 +119,114 @@ let users = [
   });
   
   console.log(user.name); // Вася
+
+// тут было принято решение изменить существующий подход оформления конспектов, 
+// теперь львиную долю информации я записываю в тетрадь, а в файлах будут лишь прогонки
+// методов и тестовых заданий
+
+/////////////////////////////////////////////
+///////////// Questions (4/0) ///////////////
+/////////////////////////////////////////////
+
+// Переведите текст вида border-left-width в borderLeftWidth
+function camelize(str) {
+    let arr = str.split('');
+
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] == '-') {
+            arr.splice(i, 2, arr[i + 1].toUpperCase());
+        }
+    }
+
+    return arr.join('');
+}
+
+console.log ( camelize("background-color") );
+console.log ( camelize("list-style-image") );
+console.log ( camelize("-webkit-transition") );
+
+// Фильтрация по диапазону
+function filterRange(arr, a, b) {
+    let answer = [];
+
+    for (let element of arr) {
+        if (element >= a && element < b) {
+            answer.push(element);
+        }
+    }
+
+    return answer;
+}
+
+let arr8 = [5, 3, 8, 1];
+
+let filtered = filterRange(arr8, 1, 4);
+
+console.log( filtered );
+
+// Фильтрация по диапазону "на месте"
+function filterRangeInPlace(arr, a, b) {
+    for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] < a || arr[i] > b) {
+            arr.splice(i, 1);
+        }
+    }
+}
+
+let arr9 = [5, 3, 8, 1];
+
+filterRangeInPlace(arr9, 1, 4);
+
+console.log( arr9 );
+
+// Сортировать в порядке по убыванию
+let arr10 = [5, 2, 1, -10, 8];
+
+arr10.sort((a, b) => b - a);
+
+console.log( arr10 );
+
+// Скопировать и отсортировать массив
+function copySorted(arr) {
+    return arr.slice().sort(); // образцовое решение
+}
+
+let arr11 = ["HTML", "JavaScript", "CSS"];
+
+let sorted = copySorted(arr11);
+
+console.log( sorted );
+console.log( arr11 );
+
+// Создать расширяемый калькулятор
+function Calculator() {
+    this.calculate = function(str) {
+        let arr = str.split(' ');
+
+        this.znak = ['+', '-'];
+        this.operation = [
+            (a,b) => a + b, 
+            (a,b) => a - b
+        ];
+
+        console.log( this.znak.findIndex(item => arr[1] == "-") );
+
+        if (arr[1] == '+') {
+            return this.operation[0](+arr[0], +arr[2]);
+        }
+
+        console.log( this.znak.findIndex(item => arr[1] == "-") );
+
+        if (arr[1] == '-') {
+            return this.operation[1](+arr[0], +arr[2]);
+        }
+    };
+    
+    this.addMethod = function(name, func) {
+
+    }
+}
+
+let calc = new Calculator;
+
+console.log( calc.calculate("3 + 7") ); // 10
