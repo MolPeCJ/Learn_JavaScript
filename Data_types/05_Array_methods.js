@@ -110,15 +110,15 @@ let users = [
     {id: 1, name: "Вася"},
     {id: 2, name: "Петя"},
     {id: 3, name: "Маша"}
-  ];
+];
   
-  let user = users.find(function (item) {
-      if (item.id == 2) {
-          return item;
-      }
-  });
+let user = users.find(function (item) {
+    if (item.id == 2) {
+        return item;
+    }
+});
   
-  console.log(user.name); // Вася
+console.log(user.name); // Вася
 
 // тут было принято решение изменить существующий подход оформления конспектов, 
 // теперь львиную долю информации я записываю в тетрадь, а в файлах будут лишь прогонки
@@ -200,33 +200,122 @@ console.log( arr11 );
 
 // Создать расширяемый калькулятор
 function Calculator() {
+    let znak = ['+', '-'];
+    let operation = [
+        (a,b) => a + b, 
+        (a,b) => a - b
+    ];
+
     this.calculate = function(str) {
         let arr = str.split(' ');
 
-        this.znak = ['+', '-'];
-        this.operation = [
-            (a,b) => a + b, 
-            (a,b) => a - b
-        ];
-
-        console.log( this.znak.findIndex(item => arr[1] == "-") );
-
-        if (arr[1] == '+') {
-            return this.operation[0](+arr[0], +arr[2]);
+        for (let i = 0; i < znak.length; i++) {
+            if (arr[1] == znak[i]) {
+                return operation[i](+arr[0], +arr[2]);
+            }
         }
-
-        console.log( this.znak.findIndex(item => arr[1] == "-") );
-
-        if (arr[1] == '-') {
-            return this.operation[1](+arr[0], +arr[2]);
-        }
-    };
+    }
     
     this.addMethod = function(name, func) {
-
+        znak.push(name);
+        operation.push(func);
     }
 }
 
 let calc = new Calculator;
 
-console.log( calc.calculate("3 + 7") ); // 10
+console.log( calc.calculate("3 * 7") );
+
+calc.addMethod("*", (a, b) => a * b);
+
+console.log( calc.calculate("3 * 7") );
+
+// Трансформировать в массив имён
+let vasya1 = { name: "Вася", age: 25 };
+let petya1 = { name: "Петя", age: 30 };
+let masha1 = { name: "Маша", age: 28 };
+
+let users1 = [vasya1, petya1, masha1];
+
+let names1 = users1.map(item => item.name);
+
+console.log( names1 );
+
+// Трансформировать в объекты (!)
+let vasya2 = { name: "Вася", surname: "Пупкин", id: 1 };
+let petya2 = { name: "Петя", surname: "Иванов", id: 2 };
+let masha2 = { name: "Маша", surname: "Петрова", id: 3 };
+
+let users2 = [vasya2, petya2, masha2];
+
+let usersMapped = users2.map(item => ({ // вот тут над помнить про скобки
+    fullname: item.name + ' ' + item.surname,
+    id: item.id
+})); // и вот тут
+
+console.log( usersMapped ); 
+
+// Отсортировать пользователей по возрасту (!)
+let vasya3 = { name: "Вася", age: 25 };
+let petya3 = { name: "Петя", age: 30 };
+let masha3 = { name: "Маша", age: 28 };
+
+let users3 = [vasya3, petya3, masha3];
+
+function sortByAge(users) {
+    users.sort((a, b) => a.age - b.age); // разобрался с поступающими значениями a, b 
+}
+
+sortByAge(users3);
+
+console.log( users3[2].name );
+
+// Перемешайте массив (!)
+let arr12 = [1, 2, 3];
+
+function shuffle(array) {
+    // используется алгоритм Фишера-Йетса
+}
+
+shuffle(arr12);
+
+console.log ( arr12 );
+
+// Получить средний возраст
+let vasya4 = { name: "Вася", age: 25 };
+let petya4 = { name: "Петя", age: 29 };
+let masha4 = { name: "Маша", age: 29 };
+
+let arr13 = [vasya4, petya4, masha4];
+
+function getAverageAge(users) {
+    let sumAge = 0;
+    let i = 0;
+
+    for (i; i < users.length - 1; i++) {
+        sumAge += arr13[i].age;
+    }
+
+    return Math.ceil(sumAge / i);
+}
+
+console.log( getAverageAge(arr13) );
+
+// Оставить уникальные элементы массива
+let strings = ["кришна", "кришна", "харе", "харе",
+  "харе", "харе", "кришна", "кришна", ":-O"
+];
+
+function unique(arr) {
+    let uniqueElements = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        if (!uniqueElements.includes(arr[i])) {
+            uniqueElements.push(arr[i]);
+        }
+    }
+
+    return uniqueElements;
+}
+
+console.log( unique(strings) );
