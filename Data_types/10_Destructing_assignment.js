@@ -195,7 +195,7 @@ console.log( items7 ); // Item1, Item2
 }
   
 showMenu(options7);
-showMenu({}); // если мы хоти мвсе значения по умолчанию, то передаем пустой объект
+showMenu({}); // если мы хотим все значения по умолчанию, то передаем пустой объект
 
 console.log(
 `\n-----------------------
@@ -246,4 +246,20 @@ function topSalary(salaries) {
 
 console.log( topSalary(salaries) );
 
-// 
+// А теперь хорошо написанное универсальное решение задачи
+
+function topSalary_right(salaries) {
+    let max = 0;
+    let maxName = null;
+
+    for (let [name, salary] of Object.entries(salaries)) { // вот именно так и перебираются объекты в массиве
+        if (salary > max) {
+            max = salary;
+            maxName = name;
+        }
+    }
+
+    return maxName;
+}
+
+console.log( topSalary_right(salaries) );
