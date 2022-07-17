@@ -57,9 +57,9 @@ console.log( json ); // выведет объект в формате JSON
 
 // Исключаем и преобразуем: replacer
 console.log( 
-`\n-------------------------------------------
-|    Исключаем и преобразуем: replacer    |
--------------------------------------------\n` );
+`\n------------------------------------------------------------------
+|    Исключаем и преобразуем: replacer. Форматирование (space)   |
+------------------------------------------------------------------\n` );
 
 // Полный синтаксис JSON.stringify:
 // let json = JSON.stringify(value, [replacer, space])
@@ -72,3 +72,161 @@ console.log(
 
 // Также полезно использовать replacer, так как у него есть возможность проанализировать
 // и заменить/пропустить даже весь объект целиком, если это необходимо
+
+// Третий аргумент в JSON.stringify - количество проблеов, используемых для форматирования.
+// Например, ниже space = 2 указывает JS отображать вложенные объекты в несколько строк 
+// с отступом в 2 пробела внутри объекта:
+
+let user2 = {
+    name: "John",
+    age: 25,
+    roles: {
+      isAdmin: false,
+      isEditor: true
+    }
+  };
+  
+  console.log(JSON.stringify(user2, null, 2));
+
+// Параметр space исключительно для логирования и красивого вывода
+
+// Пользовательский "toJSON"
+console.log( 
+`\n----------------------------------
+|    Пользовательский "toJSON"   |
+----------------------------------\n` );
+
+// Как и toString для преобразования строк, объект может предоставлять метод toJSON для преобразования в JSON. 
+// JSON.stringify автоматически вызывает его, если он есть.
+
+let room1 = {
+    number: 23
+};
+  
+let meetup1 = {
+    title: "Conference",
+    date: new Date(Date.UTC(2017, 0, 1)),
+    room1
+};
+  
+console.log( JSON.stringify(meetup1, null, 2) );
+
+// Сравним
+
+let room2 = {
+    number: 23,
+    toJSON() {
+        return this.number;
+    }
+};
+  
+let meetup2 = {
+    title: "Conference",
+    room2
+};
+
+console.log( JSON.stringify(meetup2, null, 2) );
+
+// Как видно, toJSON используется как при прямом вызове JSON.stringify(room), 
+// так и когда room вложен в другой сериализуемый объект.
+
+// JSON.parse
+console.log( 
+`\n--------------------
+|    JSON.parse    |
+--------------------\n` );
+
+// Чтобы декодировать JSON-строку, нужен другой метод с именем JSON.parse,
+// синтаксис: let value = JSON.parse(str, [reviver]);
+// *str - JSON для преобразования в объект
+// *reviver - необязательная функция, которая будет вызываться для каждой пары (ключ, значение)
+// и может преобразовывать значение
+
+// Например: 
+let numbers = '[0, 1, 2, 3]';
+
+numbers = JSON.parse(numbers);
+
+console.log( numbers[1] ); // 1
+
+// Идея для вложенных объектов: 
+let user4 = '{ "name": "John", "age": 35, "isAdmin": false, "friends": [0,1,2,3] }';
+
+user4 = JSON.parse(user4);
+
+console.log( user4.friends[1] ); // 1
+
+// Типичные ошибки
+let json1 = `{
+    name: "John",                       // Ошибка: имя свойства без кавычек
+    "surname": 'Smith',                 // Ошибка: одинарные кавычки в значении (должны быть двойными)
+    'isAdmin': false                    // Ошибка: одинарные кавычки в ключе (должны быть двойными)
+    "birthday": new Date(2000, 2, 3),   // Ошибка: не допускается конструктор "new", только значения
+    "friends": [0,1,2,3]                // Здесь всё в порядке
+  }`;
+
+// Использование reviver
+console.log( 
+`\n------------------------------
+|    Использование reviver   |
+------------------------------\n` );
+
+// Представим, что мы получили объект meetup с сервера в виде строки данных.
+let str = '{"title":"Conference","date":"2017-11-30T12:00:00.000Z"}';
+// А теперь нам нужно десериализировать ее, то есть снова превратить в объект JS.
+// Сделаем это через вызов JSON.parse:
+
+let meetup3 = JSON.parse(str);
+
+// console.log( meetup3.date.getDate() ); // Ошибка!
+// Значением meetup.date является строка, а не Date объект. 
+// Как JSON.parse мог знать, что он должен был преобразовать эту строку в Date?
+// Ппередадим JSON.parse функцию восстановления вторым аргументом, 
+// которая возвращает все значения «как есть», но date станет Date:
+
+let meetup4 = JSON.parse(str, function(key, value) {
+    if (key == 'date') return new Date(value);
+
+    return value;
+});
+  
+console.log( meetup4.date.getDate() ); // 30 - теперь работает! Так будет работать
+// и для вложенных объектов!
+
+console.log(
+`\n----------------------
+|    Задачи (1/2)    |
+----------------------\n`);
+
+// Преобразуйте объект в JSON, а затем обратно в обычный объект
+
+let user5 = {
+    name: "Anatoly Antsupov",
+    age: 21
+};
+
+let answer = JSON.parse(JSON.stringify(user5));
+
+console.log( answer.age ); // 21
+
+// Исключить обратные ссылки (!) - эталонный ответ отличается от предоставляемого
+
+let room5 = {
+    number: 23
+};
+
+let meetup5 = {
+    title: "Reunion",
+    occupiedBy: [{name: "Shelokov"}, {name: "Nikita"}],
+    place: room5
+};
+
+// цикличные ссылки
+room5.occupiedBy = meetup5;
+meetup5.self = meetup5;
+
+console.log( JSON.stringify(meetup5, function replacer(key, value) {
+    console.log( `${key}: ${value}` );
+
+    return (key == 'occupiedBy' || key == 'self') ? undefined : value;
+}));
