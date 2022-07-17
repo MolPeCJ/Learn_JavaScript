@@ -247,7 +247,7 @@ console.log(
 
 console.log(
 `\n----------------------
-|    Задачи (4/8)    |
+|    Задачи (7/8)    |
 ----------------------\n`);
 
 // Создайте дату
@@ -314,3 +314,57 @@ let date9 = new Date(2015, 0, 2);
 console.log( getDateAgo(date9, 1) ); // 1, (1 Jan 2015)
 console.log( getDateAgo(date9, 2) ); // 31, (31 Dec 2014)
 console.log( getDateAgo(date9, 365) ); // 2, (2 Jan 2014)
+
+// Последнее число месяца?
+function getLastDayOfMonth(year, month) {
+    if (year % 4 == 0) {
+        if (month == 1) {
+            return 29;
+        }
+    }
+
+    let theLastDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    return theLastDays[month];
+}
+
+// Cколько сегодня прошло секунд?
+
+function getSecondsToday() {
+    let today = new Date();
+    
+    return today.getHours() * 3600 + today.getMinutes() * 60 + today.getSeconds();
+}
+
+console.log( getSecondsToday() );
+
+// Сколько секунд осталось до завтра?
+
+function getSecondsToTomorrow() {
+    let today = new Date();
+    
+    return 86400 - (today.getHours() * 3600 + today.getMinutes() * 60 + today.getSeconds());
+}
+
+console.log( getSecondsToTomorrow() );
+
+// Форматирование относительной даты (!) - плохая формулировка задачи
+
+function formatDate(date) {
+    let now = new Date();
+
+    if (now.getTime() - date < 1) {
+        console.log( 'right now' );
+        return;
+    }
+
+    if (now - date < 60) {
+        console.log( 'n sec ago' );
+        return;
+    }
+
+    if (now - date < 3600) {
+        console.log( 'm min ago' );
+        return;
+    }
+}
