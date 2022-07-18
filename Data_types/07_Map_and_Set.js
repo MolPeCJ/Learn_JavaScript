@@ -8,6 +8,10 @@ map.set(NaN, "hehe");
 console.log( map.get(NaN) );
 
 // Перебор Map
+console.log(
+`\n--------------
+|    Map    |
+-------------\n`);
 
 let receipeMap = new Map([
     ["apple", 2],
@@ -24,6 +28,10 @@ receipeMap.forEach((value, key) => {
 });
 
 // Object.entries
+console.log(
+`\n------------------------
+|    Object.entries    |
+------------------------\n`);
 
 let obj = {
     name: "Jhon",
@@ -35,6 +43,10 @@ let map2 = new Map(Object.entries(obj));
 console.log( map2.get("name") ); 
 
 // Object.fromEntries
+console.log(
+`\n----------------------------
+|    Object.fromEntries    |
+----------------------------\n`);
 
 let prices = new Map([
     ['banana', 1],
@@ -52,9 +64,10 @@ let set = new Set(['apple', 'banana', 'juice']);
 for (let value of set) console.log( value ); // =
 set.forEach((value, valueAgain, set) => console.log( value ));
 
-/////////////////////////////////////////////
-///////////// Questions (2/3) ///////////////
-/////////////////////////////////////////////
+console.log(
+`\n----------------------
+|    Задачи (2/3)    |
+----------------------\n`);
 
 // Фильтрация уникальных элементов массива
 function unique(arr) {

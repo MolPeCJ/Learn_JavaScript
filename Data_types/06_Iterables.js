@@ -21,7 +21,10 @@ for (let element of range) {
     console.log( element );
 }
 
-// Array.from
+console.log(
+`\n--------------------
+|    Array.from    |
+--------------------\n`);
 
 let arrayLike1 = {
     0: "Hello",
