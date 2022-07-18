@@ -2,6 +2,8 @@ This repository contains summaries of educational Internet resource - [https://l
 
 The structure of each file corresponds to a specific lesson. All tasks are contained in the same. 
 
+---
+
 There is also a folder "Additionally". Here I post additional material from YouTube, other Internet resources and books:
 
 * Algorithms and Data structures 
