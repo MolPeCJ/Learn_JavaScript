@@ -331,3 +331,5 @@ function getMaxSubSum(arr) {
 }
 
 console.log( getMaxSubSum(arr7) );*/
+
+console.log(2 ** 3 ** 2);
