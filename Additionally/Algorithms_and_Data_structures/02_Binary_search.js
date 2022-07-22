@@ -21,8 +21,6 @@ function binarySearch(array, item) {
             start = array[middle] + 1;
         }
     }
-
-    
 }
 
 console.log(`\nЦифровой индекс массива: ${binarySearch(array, 7)}`);
