@@ -11,7 +11,7 @@ function quickSort(array) {
     let supportElement = array[supportElementIndex];
     let less = []; // массив для чисел меньших опорного
     let greater = []; // массив для чисел больше опорного
-    
+
     for (let i = 0; i < array.length; i++) {
         count += 1;
 
